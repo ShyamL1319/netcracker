@@ -1,0 +1,81 @@
+#Common Configuration
+server:
+  port: '8090'
+app:
+  url: "http://localhost:8090"
+spring:
+  profiles:
+    active: dev
+---
+#Development Configuration
+spring:
+  profiles: dev
+  #DB Configuration for development
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/netcracker
+    password: password
+  #ORM Configuration for development
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  cloud:
+    gcp:
+      credentials:
+        location: classpath:./shyam1319-key.json
+gcp:
+  config:
+    file: shyam1319-key.json
+  project:
+    id: shyam-1319
+  bucket:
+    id: shyam-1319
+  dir:
+    name: files
+
+logging:
+  level:
+    org.springframework: ERROR
+    com.app: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+  file: app.log
+welcome:
+  message: Welcome to Verifone !!!
+
+---
+#Production Configuration
+app:
+  url:
+spring:
+  profiles: prod
+  #DB Configuration for Production
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username:
+    url: jdbc:postgresql://localhost:5432/netcracker
+    password:
+  #ORM Configuration for Production
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQL95Dialect
+    show-sql: 'true'
+  cloud:
+    gcp:
+      credentials:
+        location: classpath:./shyam1319-key.json
+  gcp:
+    config:
+      file: shyam1319-key.json
+    project:
+      id: shyam-1319
+    bucket:
+      id: shyam-1319
+    dir:
+      name: files
+welcome:
+  message: Welcome to Netcracker !!!
