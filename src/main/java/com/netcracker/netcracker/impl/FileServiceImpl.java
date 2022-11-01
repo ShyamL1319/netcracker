@@ -52,7 +52,7 @@ public class FileServiceImpl implements FileService{
             FileDto fileDto = dataBucketUtil.uploadFile(file, fileName, contentType);
 
             if (fileDto != null) {
-                inputFiles = new InputFile(fileDto.getFileName(), fileDto.getFileUrl());
+                inputFiles = new InputFile(fileDto.getFileName().replace("files/",""), fileDto.getFileUrl());
                 LOGGER.debug("File uploaded successfully, file name: {} and url: {}",fileDto.getFileName(), fileDto.getFileUrl() );
             }
         } catch (Exception e) {

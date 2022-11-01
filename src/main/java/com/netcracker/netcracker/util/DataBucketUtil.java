@@ -1,9 +1,6 @@
 package com.netcracker.netcracker.util;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.storage.Blob;
-import com.google.cloud.storage.Bucket;
-import com.google.cloud.storage.Storage;
-import com.google.cloud.storage.StorageOptions;
+import com.google.cloud.storage.*;
 import com.netcracker.netcracker.dto.FileDto;
 import com.netcracker.netcracker.exception.BadRequestException;
 import com.netcracker.netcracker.exception.FileWriteException;
@@ -64,7 +61,7 @@ public class DataBucketUtil {
 
             RandomString id = new RandomString(7, ThreadLocalRandom.current());
             Blob blob = bucket.create(gcpDirectoryName + "/" + fileName + "-" + id.nextString() + checkFileExtension(contentType), fileData, contentType);
-
+            storage.createAcl(blob.getBlobId(), Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
             if(blob != null){
                 LOGGER.debug("File successfully uploaded to GCS");
                 return new FileDto(blob.getName(), blob.getMediaLink());
