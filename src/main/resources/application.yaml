@@ -5,7 +5,7 @@ app:
   url: "http://localhost:8090"
 spring:
   profiles:
-    active: dev
+    active: prod
 ---
 #Development Configuration
 spring:
@@ -68,14 +68,22 @@ spring:
     gcp:
       credentials:
         location: classpath:./shyam1319-key.json
-  gcp:
-    config:
-      file: shyam1319-key.json
-    project:
-      id: shyam-1319
-    bucket:
-      id: shyam-1319
-    dir:
-      name: files
+gcp:
+  config:
+    file: shyam1319-key.json
+  project:
+    id: shyam-1319
+  bucket:
+     id: shyam-1319
+  dir:
+    name: files
+logging:
+  level:
+    org.springframework: ERROR
+    com.app: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+  file: app.log
 welcome:
-  message: Welcome to Netcracker !!!
+  message: Welcome to Net Cracker !!!
