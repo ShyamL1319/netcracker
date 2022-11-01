@@ -29,7 +29,7 @@ import java.util.List;
 @RestController()
 @RequestMapping("/api")
 @RequiredArgsConstructor()
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(maxAge = 3600, origins = "*")
 @Component
 public class FileController {
 
