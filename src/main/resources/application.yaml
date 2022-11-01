@@ -55,9 +55,9 @@ spring:
   #DB Configuration for Production
   datasource:
     driver-class-name: org.postgresql.Driver
-    username:
-    url: jdbc:postgresql://localhost:5432/netcracker
-    password:
+    url: postgres://ggdbypxqjkmhnd:d8ec4020018c789c70c1daed80e60c432baf130b1bebea0a7cccae06649c0688@ec2-52-54-212-232.compute-1.amazonaws.com:5432/d2fvamrtsgnqb3
+    username: ggdbypxqjkmhnd
+    password: d8ec4020018c789c70c1daed80e60c432baf130b1bebea0a7cccae06649c0688
   #ORM Configuration for Production
   jpa:
     hibernate:
