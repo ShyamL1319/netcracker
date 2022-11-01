@@ -68,15 +68,15 @@ spring:
     gcp:
       credentials:
         location: classpath:./shyam1319-key.json
-gcp:
-  config:
-    file: shyam1319-key.json
-  project:
-    id: shyam-1319
-  bucket:
-     id: shyam-1319
-  dir:
-    name: files
+  gcp:
+    config:
+      file: shyam1319-key.json
+    project:
+      id: shyam-1319
+    bucket:
+      id: shyam-1319
+    dir:
+      name: files
 logging:
   level:
     org.springframework: ERROR
