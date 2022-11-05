@@ -63,7 +63,8 @@ public class DataBucketUtil {
 
             RandomString id = new RandomString(7, ThreadLocalRandom.current());
             Blob blob = bucket.create(gcpDirectoryName + "/" + fileName + "-" + id.nextString() + checkFileExtension(contentType), fileData, contentType);
-            storage.createAcl(blob.getBlobId(), Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
+            //storage.createAcl(blob.getBlobId(), Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
+            BlobInfo blobInfo = BlobInfo.newBuilder(blob.getBlobId()).setContentType("image/jpeg").setContentDisposition(String.format("inline; filename=\"%s\"", fileName + "-" + id.nextString())).build();
             Policy originalPolicy = storage.getIamPolicy(gcpBucketId);
             storage.setIamPolicy(
                     gcpBucketId,
