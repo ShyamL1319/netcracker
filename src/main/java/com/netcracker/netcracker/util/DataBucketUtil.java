@@ -77,7 +77,7 @@ public class DataBucketUtil {
 
            // bucket.createDefaultAcl(newDefaultOwner);
             if(blob != null){
-                LOGGER.debug("File successfully uploaded to GCS\n    ==================" +
+                LOGGER.info("File successfully uploaded to GCS\n    ==================" +
                         "\n"+blob.toString());
                 return new FileDto(blob.getName(), blob.getMediaLink());
             }
