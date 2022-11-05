@@ -63,7 +63,7 @@ public class DataBucketUtil {
 
             RandomString id = new RandomString(7, ThreadLocalRandom.current());
             Blob blob = bucket.create(gcpDirectoryName + "/" + fileName + "-" + id.nextString() + checkFileExtension(contentType), fileData, contentType);
-            //storage.createAcl(blob.getBlobId(), Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
+            storage.createAcl(blob.getBlobId(), Acl.of(Acl.User.ofAllUsers(), Acl.Role.READER));
             Policy originalPolicy = storage.getIamPolicy(gcpBucketId);
             storage.setIamPolicy(
                     gcpBucketId,
